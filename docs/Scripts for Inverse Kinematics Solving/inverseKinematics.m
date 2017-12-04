@@ -1,5 +1,5 @@
 
-%   RRRR robot arm. 3DOF
+%   RRRR robot arm. 4DOF
 %   Geometric approach to inverse kinematics.
 %
 %function [theta1RAD theta2 theta3 theta4] = inverseFunction(x, y, z)
