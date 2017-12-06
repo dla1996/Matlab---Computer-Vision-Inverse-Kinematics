@@ -1,0 +1,12 @@
+TO DO:
+
+  1: Get picture - DONE
+  2: Get edges
+  3: Get points of edges
+  4: Convert points to image-plane/work-plane of robot. Down on table or wall
+  5: Inverse kinematics of points in workspace; define constraints would need iterative solutions. Prob best to use robot toolbox.
+  6: Move to solution with small extra translation due to marker.
+  7: Check its current joint positions, relative to next point's positions.
+  8: It might points being drawn rather than lines.
+  9: Pathfinding would be needed. 
+  
