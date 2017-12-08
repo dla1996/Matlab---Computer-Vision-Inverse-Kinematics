@@ -7,5 +7,5 @@ TO DO:
   5: Inverse kinematics of points in workspace; define constraints would need iterative solutions. Prob best to use robot toolbox.
   6: Move to solution with small extra translation due to marker.
   7: Check its current joint positions, relative to next point's positions.
-  8: Pathfinding would be needed. 
+  8: Pathfinding would be needed. linked lists https://www.mathworks.com/help/matlab/matlab_oop/example-implementing-linked-lists.html
   
