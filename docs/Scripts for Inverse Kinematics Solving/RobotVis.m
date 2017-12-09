@@ -10,7 +10,8 @@ robot = robotics.RigidBodyTree;
 
 body1 = robotics.RigidBody('body1');        % This is the waist m5
 jnt1 = robotics.Joint('waist','revolute');
-jnt1.PositionLimits = [0, 3*pi/2];
+%jnt1.PositionLimits = [0, 3*pi/2];
+jnt1.PositionLimits = [-pi/2, pi/2];
 
 setFixedTransform(jnt1,dhparams(1,:),'dh');
 body1.Joint = jnt1;
@@ -19,15 +20,17 @@ addBody(robot,body1, 'base');
 
 body2 = robotics.RigidBody('body2');        % This is shoulder m4
 jnt2 = robotics.Joint('shoulder','revolute');
-jnt2.PositionLimits = [0, pi];
+%jnt2.PositionLimits = [0, pi];
+jnt2.PositionLimits = [-3*pi/4, 3*pi/4];
 
 body3 = robotics.RigidBody('body3');        % This is elbow m3
 jnt3 = robotics.Joint('elbow','revolute');
-jnt3.PositionLimits = [0, 5*pi/3];
+%jnt3.PositionLimits = [0, 5*pi/3];
+jnt3.PositionLimits = [-5*pi/6, 5*pi/6];
 
 body4 = robotics.RigidBody('body4');        % This is wrist m2
 jnt4 = robotics.Joint('wrist','revolute');
-jnt4.PositionLimits = [0, 3*pi/4];
+jnt4.PositionLimits = [-pi/3, pi/3];
 
 body5 = robotics.RigidBody('body5');        % This is grip m1
 tool0 = robotics.Joint('endeffector','fixed');
@@ -58,8 +61,8 @@ gik.ConstraintInputs = {'position','aiming'};
 posTgt = robotics.PositionTarget('body5');
 posTgt.TargetPosition = [1.0 1.0 1.0];
 
-aimCon = robotics.AimingConstraint('body5');
-aimCon.TargetPoint = [0.0 0.0 0.0];
+% aimCon = robotics.AimingConstraint('body5');
+% aimCon.TargetPoint = [0.0 0.0 0.0];
 
 q0 = homeConfiguration(robot); % Initial guess for solver
 [q,solutionInfo] = gik(q0,posTgt,aimCon);
