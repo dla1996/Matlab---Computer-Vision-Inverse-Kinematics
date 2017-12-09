@@ -61,8 +61,8 @@ gik.ConstraintInputs = {'position','aiming'};
 posTgt = robotics.PositionTarget('body5');
 posTgt.TargetPosition = [1.0 1.0 1.0];
 
-% aimCon = robotics.AimingConstraint('body5');
-% aimCon.TargetPoint = [0.0 0.0 0.0];
+aimCon = robotics.AimingConstraint('body5');
+aimCon.TargetPoint = [0.0 0.0 0.0];
 
 q0 = homeConfiguration(robot); % Initial guess for solver
 [q,solutionInfo] = gik(q0,posTgt,aimCon);
