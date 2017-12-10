@@ -1,8 +1,12 @@
+function q = inverseKinematics(x, y);
+
+% x = 3;
+% y = 4;
 % r alpha d theta
-dhparams = [0   -pi/2   0.5 0;
-            1   0       0   0;
-            1   0       0   0;
-            1   0       0   0;]
+dhparams = [0   -pi/2   2 0;
+            4   0       0   0;
+            2.75   0       0   0;
+            5.5   0       0   0;];
 
 robot = robotics.RigidBodyTree;
 
@@ -51,25 +55,27 @@ addBody(robot,body3,'body2')
 addBody(robot,body4,'body3')
 addBody(robot,body5,'body4');
 
-showdetails(robot)
+%showdetails(robot)
 
 gik = robotics.GeneralizedInverseKinematics;    
 gik.RigidBodyTree = robot;
 
-gik.ConstraintInputs = {'position','aiming'};
+limitJointChange = robotics.JointPositionBounds(robot);
+
+gik.ConstraintInputs = {'position','joint'};
 
 posTgt = robotics.PositionTarget('body5');
-posTgt.TargetPosition = [1.0 1.0 1.0];
+posTgt.TargetPosition = [x y 0];
 
-aimCon = robotics.AimingConstraint('body5');
-aimCon.TargetPoint = [0.0 0.0 0.0];
+% aimCon = robotics.AimingConstraint('body5');
+% aimCon.TargetPoint = [x y 0];
 
 q0 = homeConfiguration(robot); % Initial guess for solver
-[q,solutionInfo] = gik(q0,posTgt,aimCon);
+[q,solutionInfo] = gik(q0,posTgt, limitJointChange);
 
 f = show(robot,q);
 title(['Solver status: ' solutionInfo.Status])
-axis([-3,3,-3,3,-3,3])
+axis([-7,7,-11,11,-10,10])
 %show(robot);
 %axis([-5,5,-5,5,-5,5])
 axis on
@@ -78,3 +84,4 @@ clickedPt = get(f,'CurrentPoint');
 VMtx = view(f);
 point2d = VMtx * [clickedPt(1,:) 1]';
 disp(point2d(1:3)')
+end
