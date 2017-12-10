@@ -2,4 +2,4 @@
 These are files we will be using for Demo 4 of our robotics course. The purpose of this is to have our repurposed robot arm follow an object with Matlab's computer vision toolbox using inverse kinematics.
 
 
-Currently in progress...Denwis La and Joseph Mccarthy.
+Currently in progress...Denwis La, Joseph Mccarthy, Akshay Kumar.
