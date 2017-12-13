@@ -1,7 +1,7 @@
 % IMPORTANT
 % DO VID = WEBCAM BEFORE STARTING
 
-function [convertArrayX, convertArrayY] = getPixelCoordinates(data)
+%function [convertArrayX, convertArrayY] = getPixelCoordinates(data)
 arrayOfX = {}; % Hold all the x pixel coordinates of edges
 arrayOfY = {}; % Hold all the y pixel coordinates of edges
 
@@ -13,13 +13,13 @@ convertArrayX = {};     % Hold y coordinate converted to robot workspace
 
 %data = snapshot(vid);    % Take a single image
 
-[rows, columns, z] = size(data); % Get resolution of image
+[rows, columns, z]=size(data); % Get resolution of image
 
 bwData = im2bw(data);    % Convert image to black and white
 
 %Use a median filter to filter out noise
 diff_im = medfilt2(bwData, [3 3]);
-    
+   
 edges = edge(diff_im);  % Get edges of images
 
 % Check every element for a 1(White pixel)
@@ -49,7 +49,7 @@ end
 convertArrayX = cell2mat(convertArrayX);
 convertArrayY = cell2mat(convertArrayY);
 
-end
+%end
 
 % skip = 14;  % Skip every other # of pixels
 % 
